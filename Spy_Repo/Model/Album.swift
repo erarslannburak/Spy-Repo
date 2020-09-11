@@ -7,9 +7,19 @@
 //
 
 import Foundation
+import CoreData
 
-struct Album {
-    let name : String
-    let createDate : Date
-    let collection : Array<Photo>? = nil
+@objc(Album)
+public class Album: NSManagedObject {}
+
+extension Album {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Album> {
+        return NSFetchRequest<Album>(entityName: "Album")
+    }
+
+    @NSManaged public var id: UUID
+    @NSManaged public var name: String
+    @NSManaged public var createDate: Date
+    @NSManaged public var coverImage: Data
 }

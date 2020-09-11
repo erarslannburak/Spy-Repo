@@ -28,6 +28,7 @@
 		849C740F250A261400C5A81E /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C740D250A261400C5A81E /* PhotoCell.xib */; };
 		849C7411250A269500C5A81E /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C7410250A269500C5A81E /* PhotoViewModel.swift */; };
 		849C7413250A2E4B00C5A81E /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849C7412250A2E4B00C5A81E /* Repo.storyboard */; };
+		84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB8E250B8AA3000039A4 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		849C740D250A261400C5A81E /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		849C7410250A269500C5A81E /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		849C7412250A2E4B00C5A81E /* Repo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
+		84C8EB8E250B8AA3000039A4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				849C73D725093FEE00C5A81E /* Spy_Repo.xcdatamodeld */,
 				849C73CE25093FEE00C5A81E /* AppDelegate.swift */,
 				849C73D025093FEE00C5A81E /* SceneDelegate.swift */,
+				84C8EB8E250B8AA3000039A4 /* CoreDataManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				849C740B250982EC00C5A81E /* AlbumViewModel.swift in Sources */,
 				849C73F7250940B900C5A81E /* Photo.swift in Sources */,
 				849C73D325093FEE00C5A81E /* ViewController.swift in Sources */,
+				84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */,
 				849C740125094D0C00C5A81E /* AlbumListController.swift in Sources */,
 				849C73F5250940A300C5A81E /* Album.swift in Sources */,
 				849C73FF25094CB000C5A81E /* CalculatorController.swift in Sources */,

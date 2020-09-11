@@ -7,9 +7,20 @@
 //
 
 import Foundation
-import UIKit
+import CoreData
 
-struct Photo {
-    let image:UIImage
-    let date:Date
+@objc(Photo)
+public class Photo: NSManagedObject {}
+
+extension Photo {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Photo> {
+        return NSFetchRequest<Photo>(entityName: "Photo")
+    }
+
+    @NSManaged public var id: UUID
+    @NSManaged public var parentId: UUID
+    @NSManaged public var image: Data
+    @NSManaged public var date: Date
+    
 }

@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
+
+let coreDataManager = CoreDataManager.shared
 
 struct AlbumListViewModel {
     var albumViewModelList:[AlbumViewModel]
@@ -14,8 +18,17 @@ struct AlbumListViewModel {
 
 extension AlbumListViewModel {
     
-    mutating func add(name:String) {
-        albumViewModelList.append(AlbumViewModel(Album(name: name, createDate: Date())))
+    mutating func addAlbum(name:String) {
+        let album = coreDataManager.insertAlbum(name: name)!
+        albumViewModelList.append(AlbumViewModel(album))
+    }
+    
+    mutating func fetchData() {
+        let albumList = coreDataManager.fetchAllAlbums() ?? [Album]()
+        
+        for album in albumList {
+            albumViewModelList.append(AlbumViewModel(album))
+        }
     }
     
     func numberOfItemsInSection() -> Int {
@@ -30,7 +43,7 @@ extension AlbumListViewModel {
 
 
 struct AlbumViewModel {
-    let album:Album
+    var album:Album
     
     init(_ album:Album) {
         self.album = album
@@ -38,6 +51,11 @@ struct AlbumViewModel {
 }
 
 extension AlbumViewModel {
+    
+    var id:UUID {
+        return album.id
+    }
+    
     var name:String {
         return album.name
     }
@@ -46,20 +64,13 @@ extension AlbumViewModel {
         return album.createDate
     }
     
-    var collection:Array<Photo>? {
-        return album.collection
+    var coverImage:Data {
+        return album.coverImage
     }
-    
-    var photoListVM:PhotoListViewModel? {
-        
-        guard album.collection != nil else {return nil}
-        
-        var photoVM:[PhotoViewModel] = []
-        
-        for photo in album.collection! {
-            photoVM.append(PhotoViewModel(photo))
-        }
-        
-        return PhotoListViewModel(photoVM)
-    }
+}
+
+extension AlbumViewModel {
+    func fetchPhotos() -> PhotoListViewModel {
+        return coreDataManager.fetchPhotos(parent: album.id)!
+    }    
 }

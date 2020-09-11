@@ -10,17 +10,20 @@ import Foundation
 import UIKit
 
 struct PhotoListViewModel {
-    var photoViewModelList:[PhotoViewModel]
     
-    init(_ photoViewModel:[PhotoViewModel]) {
-        photoViewModelList = photoViewModel
+    var photoViewModelList:[PhotoViewModel] = []
+    
+    init(_ photos:[Photo]) {
+        for photo in photos {
+            self.photoViewModelList.append(PhotoViewModel(photo))
+        }
     }
 }
 
 extension PhotoListViewModel {
     
-    mutating func add(image:UIImage) {
-        photoViewModelList.append(PhotoViewModel(Photo(image: image, date: Date())))
+    mutating func addPhoto(data:Data, parent:UUID) {
+        photoViewModelList.insert(coreDataManager.insertPhoto(data: data, parent: parent)!, at: 0)
     }
     
     func numberOfItemsInSection() -> Int {
@@ -34,7 +37,7 @@ extension PhotoListViewModel {
 
 struct PhotoViewModel {
  
-    var photo:Photo
+    private let photo:Photo
     
     init(_ photo:Photo) {
         self.photo = photo
@@ -42,7 +45,16 @@ struct PhotoViewModel {
 }
 
 extension PhotoViewModel {
-    var image:UIImage {
+   
+    var id:UUID {
+        return photo.id
+    }
+    
+    var parentId:UUID {
+        return photo.parentId
+    }
+    
+    var image:Data {
         return photo.image
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t1u-kK-D8Q">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,18 +12,18 @@
             <objects>
                 <viewController storyboardIdentifier="showRepoSelecVC" id="tA3-ov-34h" customClass="RepoSelectController" customModule="Spy_Repo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dvK-TY-fZv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk4-pg-V9K">
-                                <rect key="frame" x="158" y="406" width="98" height="30"/>
+                                <rect key="frame" x="138.5" y="286.5" width="98" height="30"/>
                                 <state key="normal" title="Cihaz Hafızası"/>
                                 <connections>
                                     <action selector="deviceStorageAction:" destination="tA3-ov-34h" eventType="touchUpInside" id="Rcg-sf-su6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xJ-uF-L2a">
-                                <rect key="frame" x="162.5" y="460" width="89" height="30"/>
+                                <rect key="frame" x="143" y="340.5" width="89" height="30"/>
                                 <state key="normal" title="Uzak sunucu"/>
                                 <connections>
                                     <action selector="remoteServerAction:" destination="tA3-ov-34h" eventType="touchUpInside" id="K1T-Zf-Jnk"/>
@@ -54,11 +54,11 @@
             <objects>
                 <viewController storyboardIdentifier="showAlbumVC" id="8VD-wy-fyq" customClass="AlbumListController" customModule="Spy_Repo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ssS-Qh-3fA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oK-jK-F2k">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dh0-Rz-OiG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -90,17 +90,17 @@
             <point key="canvasLocation" x="3920.289855072464" y="125.54347826086958"/>
         </scene>
         <!--Photo List Controller-->
-        <scene sceneID="gR3-Ye-6n1">
+        <scene sceneID="aI5-sw-Nvd">
             <objects>
-                <viewController storyboardIdentifier="photoListVC" id="twq-aJ-6oU" customClass="PhotoListController" customModule="Spy_Repo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hfp-G8-vln">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController storyboardIdentifier="photoListVC" id="NH9-Bl-4VA" customClass="PhotoListController" customModule="Spy_Repo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mCJ-oZ-HPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9hu-oa-MHi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fQS-Ah-RF0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8xM-c7-2Rr">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YxP-gt-BDt">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -111,20 +111,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xNu-kB-yuJ" firstAttribute="bottom" secondItem="9hu-oa-MHi" secondAttribute="bottom" id="cQ6-RU-Xeg"/>
-                            <constraint firstItem="9hu-oa-MHi" firstAttribute="leading" secondItem="xNu-kB-yuJ" secondAttribute="leading" id="kWn-Te-TZw"/>
-                            <constraint firstItem="9hu-oa-MHi" firstAttribute="top" secondItem="xNu-kB-yuJ" secondAttribute="top" id="vFe-gZ-eTa"/>
-                            <constraint firstItem="xNu-kB-yuJ" firstAttribute="trailing" secondItem="9hu-oa-MHi" secondAttribute="trailing" id="xxW-fu-yVB"/>
+                            <constraint firstItem="fQS-Ah-RF0" firstAttribute="leading" secondItem="uT0-gT-nn7" secondAttribute="leading" id="0ol-KK-fQ3"/>
+                            <constraint firstItem="uT0-gT-nn7" firstAttribute="trailing" secondItem="fQS-Ah-RF0" secondAttribute="trailing" id="EFb-uW-AxA"/>
+                            <constraint firstItem="fQS-Ah-RF0" firstAttribute="top" secondItem="uT0-gT-nn7" secondAttribute="top" id="etw-8Y-HjW"/>
+                            <constraint firstItem="uT0-gT-nn7" firstAttribute="bottom" secondItem="fQS-Ah-RF0" secondAttribute="bottom" id="nU9-Ro-EP3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="xNu-kB-yuJ"/>
+                        <viewLayoutGuide key="safeArea" id="uT0-gT-nn7"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="9hu-oa-MHi" id="Nf8-V9-HCb"/>
+                        <outlet property="collectionView" destination="fQS-Ah-RF0" id="NA0-Ft-GNF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u54-4I-Sao" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hh-Fd-tnh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4713" y="126"/>
+            <point key="canvasLocation" x="4704" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5hK-og-tPE">
@@ -132,7 +132,7 @@
                 <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" id="t1u-kK-D8Q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uyu-D7-3Av">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

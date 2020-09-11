@@ -24,6 +24,6 @@ class AlbumCell: UICollectionViewCell {
     
     func configure(albumViewModel:AlbumViewModel) {
         nameLabel.text = albumViewModel.name
+        imageView.image = UIImage(data: albumViewModel.coverImage)
     }
-
 }

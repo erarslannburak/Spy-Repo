@@ -25,6 +25,8 @@ class AlbumListController: ViewController {
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
+        albumListViewModel.fetchData()
+        collectionView.reloadData()
     }
 }
 
@@ -76,7 +78,8 @@ extension AlbumListController {
                 return
             }
             if !(textField.text?.isEmpty ?? true) {
-                self.albumListViewModel.add(name: textField.text!)
+//                self.albumListViewModel.add(name: textField.text!)
+                self.albumListViewModel.addAlbum(name: textField.text!)
                 self.collectionView.reloadData()
             }else{
                 // Burada baska bir alert ile albüm ismi boş olamaz mesajı gösterilebilir.
