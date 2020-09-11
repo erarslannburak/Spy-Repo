@@ -29,6 +29,9 @@
 		849C7411250A269500C5A81E /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C7410250A269500C5A81E /* PhotoViewModel.swift */; };
 		849C7413250A2E4B00C5A81E /* Repo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849C7412250A2E4B00C5A81E /* Repo.storyboard */; };
 		84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB8E250B8AA3000039A4 /* CoreDataManager.swift */; };
+		84C8EB9A250C146F000039A4 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB99250C146F000039A4 /* UICollectionView+Extension.swift */; };
+		84C8EB9D250C1528000039A4 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB9C250C1528000039A4 /* Util.swift */; };
+		84C8EB9F250C153C000039A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8EB9E250C153C000039A4 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		849C7410250A269500C5A81E /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		849C7412250A2E4B00C5A81E /* Repo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Repo.storyboard; sourceTree = "<group>"; };
 		84C8EB8E250B8AA3000039A4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		84C8EB99250C146F000039A4 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		84C8EB9C250C1528000039A4 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		84C8EB9E250C153C000039A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,8 @@
 		849C73CD25093FEE00C5A81E /* Spy_Repo */ = {
 			isa = PBXGroup;
 			children = (
+				84C8EB9B250C1520000039A4 /* Util */,
+				84C8EB98250C1451000039A4 /* Extensions */,
 				849C73F82509454800C5A81E /* App */,
 				849C73F32509409300C5A81E /* Model */,
 				849C73FA2509457800C5A81E /* View */,
@@ -198,6 +206,23 @@
 				849C7410250A269500C5A81E /* PhotoViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		84C8EB98250C1451000039A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84C8EB99250C146F000039A4 /* UICollectionView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84C8EB9B250C1520000039A4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				84C8EB9C250C1528000039A4 /* Util.swift */,
+				84C8EB9E250C153C000039A4 /* Constants.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,11 +329,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C8EB9A250C146F000039A4 /* UICollectionView+Extension.swift in Sources */,
 				849C740B250982EC00C5A81E /* AlbumViewModel.swift in Sources */,
 				849C73F7250940B900C5A81E /* Photo.swift in Sources */,
 				849C73D325093FEE00C5A81E /* ViewController.swift in Sources */,
 				84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */,
 				849C740125094D0C00C5A81E /* AlbumListController.swift in Sources */,
+				84C8EB9D250C1528000039A4 /* Util.swift in Sources */,
 				849C73F5250940A300C5A81E /* Album.swift in Sources */,
 				849C73FF25094CB000C5A81E /* CalculatorController.swift in Sources */,
 				849C740E250A261400C5A81E /* PhotoCell.swift in Sources */,
@@ -319,6 +346,7 @@
 				849C74032509501D00C5A81E /* PhotoListController.swift in Sources */,
 				849C740725095B5F00C5A81E /* AlbumCell.swift in Sources */,
 				849C73FD2509472900C5A81E /* RepoSelectController.swift in Sources */,
+				84C8EB9F250C153C000039A4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

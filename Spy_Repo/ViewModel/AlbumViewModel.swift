@@ -23,7 +23,7 @@ extension AlbumListViewModel {
         albumViewModelList.append(AlbumViewModel(album))
     }
     
-    mutating func fetchData() {
+    mutating func fetchAlbums() {
         let albumList = coreDataManager.fetchAllAlbums() ?? [Album]()
         
         for album in albumList {

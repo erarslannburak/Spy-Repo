@@ -18,8 +18,6 @@ class PhotoCell: UICollectionViewCell {
     }
 
     func configure(photoViewModel:PhotoViewModel) {
-//        DispatchQueue.main.async {
-            self.imageView.image = UIImage(data: photoViewModel.image)
-//        }
+        self.imageView.image = UIImage(data: photoViewModel.image)        
     }
 }

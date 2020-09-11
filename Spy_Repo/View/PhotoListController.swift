@@ -21,7 +21,7 @@ class PhotoListController: ViewController {
         self.title = albumViewModel.name
         addPhotoBarButtonItem()
         
-        collectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+        collectionView.registerPhotoCell()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
@@ -70,7 +70,7 @@ extension PhotoListController {
     }
     
     @objc func addPhoto() {
-        photoListViewModel.addPhoto(data: (UIImage(named: "art")?.jpegData(compressionQuality: 0.5))!, parent: albumViewModel.id)
-        collectionView.reloadData()
+//        photoListViewModel.addPhoto(data: (UIImage(named: "art")?.jpegData(compressionQuality: 0.5))!, parent: albumViewModel.id)
+//        collectionView.reloadData()
     }
 }

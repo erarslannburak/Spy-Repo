@@ -17,15 +17,15 @@ class AlbumListController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Albümler"
+        self.title = Constants.ALBUMS
         self.addAlbumBarButtonItem()
         
-        collectionView.register(UINib(nibName: "AlbumCell", bundle: nil), forCellWithReuseIdentifier: "albumCell")
+        collectionView.registerAlbumCell()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
-        albumListViewModel.fetchData()
+        albumListViewModel.fetchAlbums()
         collectionView.reloadData()
     }
 }
@@ -68,17 +68,16 @@ extension AlbumListController {
     }
     
     @objc func addAlbum() {
-        let alert = UIAlertController(title: "Albüm Ekle", message: "Lütfen eklemek istediğiniz albümün adını giriniz.", preferredStyle: .alert)
+        let alert = UIAlertController(title: Constants.ADD_ALBUM, message: Constants.INPUT_ALBUM_NAME_MESSAGE, preferredStyle: .alert)
         alert.addTextField { (textField:UITextField) in
-            textField.placeholder = "Albüm Adı"
+            textField.placeholder = Constants.INPUT_ALBUM_NAME_PLACEHOLDER
         }
         
-        alert.addAction(UIAlertAction(title: "Ekle", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: Constants.ADD, style: .default, handler: { (action) in
             guard let textField = alert.textFields?.first else {
                 return
             }
             if !(textField.text?.isEmpty ?? true) {
-//                self.albumListViewModel.add(name: textField.text!)
                 self.albumListViewModel.addAlbum(name: textField.text!)
                 self.collectionView.reloadData()
             }else{
@@ -86,7 +85,7 @@ extension AlbumListController {
             }
         }))
         
-        alert.addAction(UIAlertAction(title: "Vazgeç", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Constants.CANCEL, style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
