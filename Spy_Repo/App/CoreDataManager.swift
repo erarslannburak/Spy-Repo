@@ -62,72 +62,85 @@ class CoreDataManager {
     }
     
     // MARK: - Insert Album
-    func insertAlbum(name:String) -> Album? {
+    func insertAlbum(name:String) -> AlbumViewModel? {
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Album",in: managedContext)!
         
         
-        let album = NSManagedObject(entity: entity,
+        let coreAlbum = NSManagedObject(entity: entity,
         insertInto: managedContext)
         
-        album.setValue(name, forKey: "name")
-        album.setValue(Date(), forKey: "createDate")
-        album.setValue(UUID(), forKey: "id")
-        album.setValue(UIImage(named: "art")?.jpegData(compressionQuality: 0.5), forKey: "coverImage")
+        coreAlbum.setValue(name, forKey: "name")
+        coreAlbum.setValue(Date(), forKey: "createDate")
+        coreAlbum.setValue(UUID(), forKey: "id")
+        coreAlbum.setValue(UIImage(named: "art")?.jpegData(compressionQuality: 0.5), forKey: "coverImage")
         
         do {
-          try managedContext.save()
-          return album as? Album
+            try managedContext.save()
+            
+            return AlbumViewModel(Album((coreAlbum as? CoreAlbum)!))
         } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-          return nil
+            print("Could not save. \(error), \(error.userInfo)")
+            return nil
         }
     }
     
     // MARK: - Update Album Cover Image
-    func update(coverImage:Data, album : Album) {
+    func update(coverImage:Data, id:UUID) {
     
         let context = CoreDataManager.shared.persistentContainer.viewContext
-       
+
+        
+        guard let coreAlbum = self.fetchAlbum(id) else {return}
+        
+        
+        
         do {
-            album.setValue(coverImage, forKey: "coverImage")
+            coreAlbum.setValue(coverImage, forKey: "coverImage")
             do {
                 try context.save()
                 print("saved!")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             } catch {
-           
+
             }
         }
     }
     
     //MARK: - Delete Album
     
-    func delete(album:Album) {
-        let managedContext = CoreDataManager.shared.persistentContainer.viewContext
-
-        do {
-          
-          managedContext.delete(album)
-          
-        }
-        do {
-          try managedContext.save()
-        } catch {
-            print(error)
-        }
-    }
+//    func delete(album:Album) {
+//        let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+//
+//        do {
+//
+//          managedContext.delete(album)
+//
+//        }
+//        do {
+//          try managedContext.save()
+//        } catch {
+//            print(error)
+//        }
+//    }
     
     //MARK: - Get All Album
-    func fetchAllAlbums() -> [Album]?{
+    func fetchAllAlbums() -> [AlbumViewModel]?{
         
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Album")
-
+        fetchRequest.returnsObjectsAsFaults = false
+        
         do {
-            let album = try managedContext.fetch(fetchRequest)
-            return (album as? [Album])
+            let coreAlbumList = try managedContext.fetch(fetchRequest)
+           
+            var albumViewModelList:[AlbumViewModel] = []
+            for coreAlbum in coreAlbumList {
+                albumViewModelList.append(AlbumViewModel(Album(coreAlbum as! CoreAlbum)))
+            }
+            
+            return albumViewModelList
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
@@ -139,17 +152,17 @@ class CoreDataManager {
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Photo",in: managedContext)!
                 
-        let photo = NSManagedObject(entity: entity,
+        let corePhoto = NSManagedObject(entity: entity,
         insertInto: managedContext)
 
-        photo.setValue(UUID(), forKey: "id")
-        photo.setValue(parent, forKey: "parentId")
-        photo.setValue(Date(), forKey: "date")
-        photo.setValue(data, forKey: "image")
+        corePhoto.setValue(UUID(), forKey: "id")
+        corePhoto.setValue(parent, forKey: "parentId")
+        corePhoto.setValue(Date(), forKey: "date")
+        corePhoto.setValue(data, forKey: "image")
     
         do {
           try managedContext.save()
-          return PhotoViewModel(photo as! Photo)
+          return PhotoViewModel(Photo(corePhoto as! CorePhoto))
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
           return nil
@@ -162,11 +175,37 @@ class CoreDataManager {
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Photo")
         fetchRequest.predicate = NSPredicate(format: "parentId == %@", parent as CVarArg)
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do {
+            let corePhotoList = try managedContext.fetch(fetchRequest)
+            
+            var photoViewModelList:[PhotoViewModel] = []
+            
+            for corePhoto in corePhotoList {
+                photoViewModelList.append(PhotoViewModel(Photo(corePhoto as! CorePhoto)))
+            }
+            
+            return PhotoListViewModel(photoViewModelList)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
+    //MARK: - Get CoreAlbum
+    func fetchAlbum(_ id:UUID) -> CoreAlbum? {
+        let managedContext = CoreDataManager.shared.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Album")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        fetchRequest.returnsObjectsAsFaults = false
         
         do {
-            let photo = try managedContext.fetch(fetchRequest)
-            return PhotoListViewModel(photo as! [Photo])
-        } catch let error as NSError {
+            let coreAlbum = try managedContext.fetch(fetchRequest).first
+            
+            return coreAlbum as? CoreAlbum
+            
+        }catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
         }

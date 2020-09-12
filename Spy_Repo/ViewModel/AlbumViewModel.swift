@@ -13,30 +13,36 @@ import CoreData
 let coreDataManager = CoreDataManager.shared
 
 struct AlbumListViewModel {
-    var albumViewModelList:[AlbumViewModel]
+
+    var datasource: CollectionDataSource<DefaultCellModel<AlbumViewModel>>!
+
+    init() {
+        let albumViewModelList = coreDataManager.fetchAllAlbums() ?? [AlbumViewModel]()
+        self.datasource = CollectionDataSource((self.getDefaultCellModel(albumViewModelList.reversed())))
+    }
 }
 
 extension AlbumListViewModel {
     
     mutating func addAlbum(name:String) {
-        let album = coreDataManager.insertAlbum(name: name)!
-        albumViewModelList.append(AlbumViewModel(album))
+        let albumViewModel = coreDataManager.insertAlbum(name: name)!
+        datasource.items.insert(DefaultCellModel((identifier: "albumCell", model: albumViewModel)), at: 0)
     }
     
-    mutating func fetchAlbums() {
-        let albumList = coreDataManager.fetchAllAlbums() ?? [Album]()
-        
-        for album in albumList {
-            albumViewModelList.append(AlbumViewModel(album))
+    func didSelectItemAt(_ indexPath:IndexPath) -> AlbumViewModel {
+        return (datasource.items[indexPath.row].property?.model)!
+    }
+}
+
+extension AlbumListViewModel {
+
+    func getDefaultCellModel(_ albumViewModelList:[AlbumViewModel]) -> [DefaultCellModel<AlbumViewModel>]{
+        var cellModelList:[DefaultCellModel<AlbumViewModel>] = []
+
+        albumViewModelList.forEach { (item) in
+            cellModelList.append(DefaultCellModel((identifier: "albumCell", model: item)))
         }
-    }
-    
-    func numberOfItemsInSection() -> Int {
-        return albumViewModelList.count
-    }
-    
-    func cellForItemAt(_ indexPath:IndexPath) -> AlbumViewModel {
-        return albumViewModelList[indexPath.row]
+        return cellModelList
     }
 }
 
@@ -64,7 +70,7 @@ extension AlbumViewModel {
         return album.createDate
     }
     
-    var coverImage:Data {
+    var coverImage:Dynamic<Data> {
         return album.coverImage
     }
 }
@@ -72,5 +78,10 @@ extension AlbumViewModel {
 extension AlbumViewModel {
     func fetchPhotos() -> PhotoListViewModel {
         return coreDataManager.fetchPhotos(parent: album.id)!
-    }    
+    }
+    
+    func updateCover(data: Data) {
+        coreDataManager.update(coverImage: data, id: album.id)
+        album.coverImage.value = data
+    }
 }

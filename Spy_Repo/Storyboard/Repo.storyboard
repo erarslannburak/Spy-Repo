@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk4-pg-V9K">
-                                <rect key="frame" x="138.5" y="286.5" width="98" height="30"/>
+                                <rect key="frame" x="138.5" y="264.5" width="98" height="30"/>
                                 <state key="normal" title="Cihaz Hafızası"/>
                                 <connections>
                                     <action selector="deviceStorageAction:" destination="tA3-ov-34h" eventType="touchUpInside" id="Rcg-sf-su6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xJ-uF-L2a">
-                                <rect key="frame" x="143" y="340.5" width="89" height="30"/>
+                                <rect key="frame" x="143" y="318.5" width="89" height="30"/>
                                 <state key="normal" title="Uzak sunucu"/>
                                 <connections>
                                     <action selector="remoteServerAction:" destination="tA3-ov-34h" eventType="touchUpInside" id="K1T-Zf-Jnk"/>
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSH-mx-OJ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3171.0144927536235" y="125.54347826086958"/>
+            <point key="canvasLocation" x="3919" y="-556"/>
         </scene>
         <!--Album List Controller-->
         <scene sceneID="ml9-mD-bAp">
@@ -58,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oK-jK-F2k">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dh0-Rz-OiG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -137,12 +137,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="tA3-ov-34h" kind="relationship" relationship="rootViewController" id="0fc-Jo-GJs"/>
+                        <segue destination="8VD-wy-fyq" kind="relationship" relationship="rootViewController" id="Bdy-96-d3Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVO-a9-m5a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407" y="125"/>
+            <point key="canvasLocation" x="3134" y="125"/>
         </scene>
     </scenes>
 </document>

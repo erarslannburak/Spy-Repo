@@ -17,49 +17,41 @@ class PhotoListController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = albumViewModel.name
         addPhotoBarButtonItem()
         
+        photoListViewModel = albumViewModel.fetchPhotos()
+        
         collectionView.registerPhotoCell()
         collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        collectionView.dataSource = photoListViewModel.datasource
+        collectionView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
         
-        photoListViewModel = albumViewModel.fetchPhotos()
-        collectionView.reloadData()
+        photoListViewModel.datasource.configureCell = { [weak self] (cell,item,indexPath) in
+            guard self != nil else{return}
+            (cell as! PhotoCell).item = item
+        }
     }
 }
 
-extension PhotoListController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoListViewModel.numberOfItemsInSection()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell()}
-        cell.configure(photoViewModel: photoListViewModel.cellForItemAt(indexPath))
-        
-        return cell
-        
-    }
+extension PhotoListController:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.width - 16)/3
+        let width = (self.view.frame.width - 9)/4
         return CGSize(width: width , height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 3
     }
 }
 
@@ -70,7 +62,49 @@ extension PhotoListController {
     }
     
     @objc func addPhoto() {
-//        photoListViewModel.addPhoto(data: (UIImage(named: "art")?.jpegData(compressionQuality: 0.5))!, parent: albumViewModel.id)
-//        collectionView.reloadData()
+        
+        let alert = UIAlertController(title: Constants.ADD_PHOTO, message: Constants.ADD_PHOTO_MESSAGE, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: Constants.CAMERA, style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .camera)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.PHOTO_ALBUM, style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.CANCEL, style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+}
+extension PhotoListController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        self.dismiss(animated: true) { [weak self] in
+
+            guard let self = self else {return}
+            
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+            
+            guard let data = image.jpegData(compressionQuality: 0.75) else {return}
+            
+            self.photoListViewModel.addPhoto(data: data, parent: self.albumViewModel.id)
+            self.albumViewModel.updateCover(data: data)
+            self.collectionView.reloadData()
+
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -11,11 +11,11 @@ import UIKit
 extension UICollectionView {
    
     func registerAlbumCell() {
-        register(UINib(nibName: "AlbumCell", bundle: nil), forCellWithReuseIdentifier: "AlbumCell")
+        register(UINib(nibName: "AlbumCell", bundle: nil), forCellWithReuseIdentifier: "albumCell")
     }
 
     func registerPhotoCell() {
-        register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "PhotoCell")
+        register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
     }
 
 }

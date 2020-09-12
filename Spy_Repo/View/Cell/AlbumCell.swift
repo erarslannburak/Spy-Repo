@@ -8,22 +8,30 @@
 
 import UIKit
 
-class AlbumCell: UICollectionViewCell {
+class AlbumCell: UICollectionViewCell,ReusableCell {
 
+    typealias T = DefaultCellModel<AlbumViewModel>
+    
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameContainerView:UIView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var item: DefaultCellModel<AlbumViewModel>?{
+        didSet {
+            
+            nameLabel.text = item?.property?.model?.name
+            
+            item?.property?.model?.coverImage.bind(listener: { [weak self] (data)  in
+                self?.imageView.image = UIImage(data: data)
+            })
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         DispatchQueue.main.async {
-            self.layer.cornerRadius = 8
-            self.layer.borderColor = UIColor.lightGray.cgColor
-            self.layer.borderWidth = 0.75
+            self.cornerRadius(radius: 8)
+            self.nameContainerView.blur()
         }
-    }
-    
-    func configure(albumViewModel:AlbumViewModel) {
-        nameLabel.text = albumViewModel.name
-        imageView.image = UIImage(data: albumViewModel.coverImage)
     }
 }

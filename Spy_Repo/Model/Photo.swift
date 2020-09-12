@@ -9,18 +9,17 @@
 import Foundation
 import CoreData
 
-@objc(Photo)
-public class Photo: NSManagedObject {}
-
-extension Photo {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Photo> {
-        return NSFetchRequest<Photo>(entityName: "Photo")
-    }
-
-    @NSManaged public var id: UUID
-    @NSManaged public var parentId: UUID
-    @NSManaged public var image: Data
-    @NSManaged public var date: Date
+struct Photo {
+    let id:UUID
+    let parentId:UUID
+    let image:Data
+    let date:Date
     
+    
+    init(_ corePhoto:CorePhoto) {
+        self.id = corePhoto.id!
+        self.parentId = corePhoto.parentId!
+        self.date = corePhoto.date!
+        self.image = corePhoto.image!
+    }
 }

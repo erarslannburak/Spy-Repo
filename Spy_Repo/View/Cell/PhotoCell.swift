@@ -8,16 +8,20 @@
 
 import UIKit
 
-class PhotoCell: UICollectionViewCell {
+class PhotoCell: UICollectionViewCell,ReusableCell {
 
+    typealias T = DefaultCellModel<PhotoViewModel>
+    
     @IBOutlet weak var imageView:UIImageView!
+    
+    var item: DefaultCellModel<PhotoViewModel>?{
+        didSet {
+            self.imageView.image = UIImage(data: (item?.property?.model!.image)!)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    func configure(photoViewModel:PhotoViewModel) {
-        self.imageView.image = UIImage(data: photoViewModel.image)        
     }
 }

@@ -12,7 +12,7 @@ class AlbumListController: ViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var albumListViewModel = AlbumListViewModel(albumViewModelList: [])
+    var albumListViewModel = AlbumListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,29 +22,21 @@ class AlbumListController: ViewController {
         
         collectionView.registerAlbumCell()
         collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.dataSource = albumListViewModel.datasource
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         
-        albumListViewModel.fetchAlbums()
-        collectionView.reloadData()
+    
+        albumListViewModel.datasource.configureCell = { [weak self] (cell, item, indexPath) in
+            guard self != nil else {return}
+            (cell as! AlbumCell).item = item
+        }
     }
 }
 
-extension AlbumListController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return albumListViewModel.numberOfItemsInSection()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "albumCell", for: indexPath) as? AlbumCell else {return UICollectionViewCell()}
-        cell.configure(albumViewModel: (albumListViewModel.cellForItemAt(indexPath)))
-        return cell
-        
-    }
+extension AlbumListController:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.showPhotoListVC(albumViewModel: albumListViewModel.cellForItemAt(indexPath))
+        self.showPhotoListVC(albumViewModel: albumListViewModel.didSelectItemAt(indexPath))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,14 +66,20 @@ extension AlbumListController {
         }
         
         alert.addAction(UIAlertAction(title: Constants.ADD, style: .default, handler: { (action) in
-            guard let textField = alert.textFields?.first else {
-                return
-            }
-            if !(textField.text?.isEmpty ?? true) {
-                self.albumListViewModel.addAlbum(name: textField.text!)
-                self.collectionView.reloadData()
-            }else{
-                // Burada baska bir alert ile albüm ismi boş olamaz mesajı gösterilebilir.
+            
+            DispatchQueue.main.async {
+                
+                guard let textField = alert.textFields?.first else {
+                    return
+                }
+                
+                if !(textField.text?.isEmpty ?? true) {
+                    self.albumListViewModel.addAlbum(name: textField.text!)
+                    self.collectionView.reloadData()
+
+                }else{
+                    // Burada baska bir alert ile albüm ismi boş olamaz mesajı gösterilebilir.
+                }
             }
         }))
         

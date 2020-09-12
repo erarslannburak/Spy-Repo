@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="205" height="179"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QKE-iO-ZzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="205" height="142"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QKE-iO-ZzJ">
+                        <rect key="frame" x="0.0" y="0.0" width="205" height="179"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7z-95-PqR">
                         <rect key="frame" x="0.0" y="142" width="205" height="37"/>
@@ -29,7 +29,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.2462312940140845" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WpQ-zP-88z" firstAttribute="leading" secondItem="j7z-95-PqR" secondAttribute="leading" constant="8" id="6ca-Fd-yBP"/>
                             <constraint firstItem="WpQ-zP-88z" firstAttribute="centerY" secondItem="j7z-95-PqR" secondAttribute="centerY" id="KCA-dZ-BIb"/>
@@ -44,11 +43,11 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="QKE-iO-ZzJ" secondAttribute="bottom" id="76e-Z3-boP"/>
                 <constraint firstItem="QKE-iO-ZzJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Ja-xR-UMw"/>
                 <constraint firstItem="QKE-iO-ZzJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NJq-Io-ROg"/>
                 <constraint firstAttribute="trailing" secondItem="QKE-iO-ZzJ" secondAttribute="trailing" id="RFA-Nh-crZ"/>
                 <constraint firstItem="j7z-95-PqR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Zbk-AX-fXP"/>
-                <constraint firstItem="j7z-95-PqR" firstAttribute="top" secondItem="QKE-iO-ZzJ" secondAttribute="bottom" id="mzA-r3-mJ8"/>
                 <constraint firstAttribute="trailing" secondItem="j7z-95-PqR" secondAttribute="trailing" id="vpu-M2-43l"/>
                 <constraint firstAttribute="bottom" secondItem="j7z-95-PqR" secondAttribute="bottom" id="zW2-j8-fO8"/>
             </constraints>
@@ -56,6 +55,7 @@
             <size key="customSize" width="205" height="179"/>
             <connections>
                 <outlet property="imageView" destination="QKE-iO-ZzJ" id="7jJ-nO-F3B"/>
+                <outlet property="nameContainerView" destination="j7z-95-PqR" id="xqc-L9-7DI"/>
                 <outlet property="nameLabel" destination="WpQ-zP-88z" id="OLx-ZM-pdP"/>
             </connections>
             <point key="canvasLocation" x="250.00000000000003" y="93.415178571428569"/>

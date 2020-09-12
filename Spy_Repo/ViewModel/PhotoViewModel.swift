@@ -11,32 +11,39 @@ import UIKit
 
 struct PhotoListViewModel {
     
-    var photoViewModelList:[PhotoViewModel] = []
-    
-    init(_ photos:[Photo]) {
-        for photo in photos {
-            self.photoViewModelList.append(PhotoViewModel(photo))
-        }
+    var datasource: CollectionDataSource<DefaultCellModel<PhotoViewModel>>!
+
+    init(_ photoViewModelList:[PhotoViewModel]) {
+        self.datasource = CollectionDataSource((self.getDefaultCellModel(photoViewModelList.reversed())))
     }
 }
 
 extension PhotoListViewModel {
     
     mutating func addPhoto(data:Data, parent:UUID) {
-        photoViewModelList.insert(coreDataManager.insertPhoto(data: data, parent: parent)!, at: 0)
+        self.datasource.items.insert(DefaultCellModel((identifier: "photoCell", model: coreDataManager.insertPhoto(data: data, parent: parent))), at: 0)
     }
     
-    func numberOfItemsInSection() -> Int {
-        return photoViewModelList.count
-    }
-    
-    func cellForItemAt(_ indexPath:IndexPath) -> PhotoViewModel {
-        return photoViewModelList[indexPath.row]
+    func didSelectItemAt(_ indexPath:IndexPath) -> PhotoViewModel {
+        return (datasource.items[indexPath.row].property?.model)!
     }
 }
 
+extension PhotoListViewModel {
+
+    func getDefaultCellModel(_ photoViewModelList:[PhotoViewModel]) -> [DefaultCellModel<PhotoViewModel>]{
+        var cellModelList:[DefaultCellModel<PhotoViewModel>] = []
+
+        photoViewModelList.forEach { (item) in
+            cellModelList.append(DefaultCellModel((identifier: "photoCell", model: item)))
+        }
+        return cellModelList
+    }
+}
+
+
+
 struct PhotoViewModel {
- 
     private let photo:Photo
     
     init(_ photo:Photo) {
@@ -45,7 +52,6 @@ struct PhotoViewModel {
 }
 
 extension PhotoViewModel {
-   
     var id:UUID {
         return photo.id
     }
