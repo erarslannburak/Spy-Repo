@@ -10,27 +10,52 @@ import UIKit
 
 class CalculatorController: ViewController {
 
+    @IBOutlet weak var collectionView:UICollectionView!
+    @IBOutlet weak var resultLabel:UILabel!
+    
+    let calculatorListViewModel = CalculatorListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DispatchQueue.main.async {
-//            self.showRepoSelecVC()
-            let repoStoryboard: UIStoryboard = UIStoryboard(name: "Repo", bundle: nil)
-            let navigationController = repoStoryboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
-            UIApplication.shared.windows.first?.rootViewController = navigationController
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = calculatorListViewModel.datasource
+        
+        
+        calculatorListViewModel.datasource.configureCell = {[weak self] (cell,item,indexPath) in
+            guard self != nil else {return}
+            (cell as! CalculatorCell).item = item
+            
         }
+        
+        
+        //        DispatchQueue.main.async {
+//            self.showRepoSelecVC()
+//            let repoStoryboard: UIStoryboard = UIStoryboard(name: "Repo", bundle: nil)
+//            let navigationController = repoStoryboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+//            UIApplication.shared.windows.first?.rootViewController = navigationController
+//            UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        }
+    }
+}
+
+extension CalculatorController: UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemWidth = (collectionView.frame.width - 42)/4
+        
+        if calculatorListViewModel.cellForItemAt(indexPath).item == .zero {
+            return CGSize(width: (itemWidth * 2)+14, height: itemWidth)
+        }
+        
+        return CGSize(width: itemWidth, height: itemWidth)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 14
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 14
+    }
 }

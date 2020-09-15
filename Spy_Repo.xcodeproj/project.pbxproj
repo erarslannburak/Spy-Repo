@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8424817C250D4DC90085C45B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424817B250D4DC90085C45B /* UIView+Extension.swift */; };
+		848A45C3251011CA0042E748 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C2251011CA0042E748 /* UIColor+Extension.swift */; };
+		848A45C62510258A0042E748 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C52510258A0042E748 /* Calculator.swift */; };
+		848A45C8251026BF0042E748 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C7251026BF0042E748 /* CalculatorViewModel.swift */; };
+		848A45CA251030610042E748 /* CalculatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C9251030610042E748 /* CalculatorCell.swift */; };
 		849C73CF25093FEE00C5A81E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C73CE25093FEE00C5A81E /* AppDelegate.swift */; };
 		849C73D125093FEE00C5A81E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C73D025093FEE00C5A81E /* SceneDelegate.swift */; };
 		849C73D325093FEE00C5A81E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C73D225093FEE00C5A81E /* ViewController.swift */; };
@@ -50,6 +54,10 @@
 
 /* Begin PBXFileReference section */
 		8424817B250D4DC90085C45B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		848A45C2251011CA0042E748 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		848A45C52510258A0042E748 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		848A45C7251026BF0042E748 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		848A45C9251030610042E748 /* CalculatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorCell.swift; sourceTree = "<group>"; };
 		849C73CB25093FEE00C5A81E /* Spy_Repo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spy_Repo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849C73CE25093FEE00C5A81E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849C73D025093FEE00C5A81E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848A45C42510257B0042E748 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				848A45C52510258A0042E748 /* Calculator.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		849C73C225093FEE00C5A81E = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 		849C73CD25093FEE00C5A81E /* Spy_Repo */ = {
 			isa = PBXGroup;
 			children = (
+				848A45C42510257B0042E748 /* Enums */,
 				849C73F82509454800C5A81E /* App */,
 				84C8EBA2250CD705000039A4 /* DataSource */,
 				84C8EB98250C1451000039A4 /* Extensions */,
@@ -205,6 +222,7 @@
 				849C740625095B5F00C5A81E /* AlbumCell.xib */,
 				849C740C250A261400C5A81E /* PhotoCell.swift */,
 				849C740D250A261400C5A81E /* PhotoCell.xib */,
+				848A45C9251030610042E748 /* CalculatorCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -214,6 +232,7 @@
 			children = (
 				849C740A250982EC00C5A81E /* AlbumViewModel.swift */,
 				849C7410250A269500C5A81E /* PhotoViewModel.swift */,
+				848A45C7251026BF0042E748 /* CalculatorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				84C8EB99250C146F000039A4 /* UICollectionView+Extension.swift */,
+				848A45C2251011CA0042E748 /* UIColor+Extension.swift */,
 				8424817B250D4DC90085C45B /* UIView+Extension.swift */,
 			);
 			path = Extensions;
@@ -353,7 +373,9 @@
 				849C740B250982EC00C5A81E /* AlbumViewModel.swift in Sources */,
 				849C73F7250940B900C5A81E /* Photo.swift in Sources */,
 				849C73D325093FEE00C5A81E /* ViewController.swift in Sources */,
+				848A45C8251026BF0042E748 /* CalculatorViewModel.swift in Sources */,
 				84C8EBA4250CD720000039A4 /* CollectionDataSource.swift in Sources */,
+				848A45C62510258A0042E748 /* Calculator.swift in Sources */,
 				84C8EBA6250CD756000039A4 /* ReusableCell.swift in Sources */,
 				84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */,
 				849C740125094D0C00C5A81E /* AlbumListController.swift in Sources */,
@@ -364,8 +386,10 @@
 				849C73CF25093FEE00C5A81E /* AppDelegate.swift in Sources */,
 				84C8EBA1250C23EF000039A4 /* Dynamic.swift in Sources */,
 				849C73D925093FEE00C5A81E /* Spy_Repo.xcdatamodeld in Sources */,
+				848A45CA251030610042E748 /* CalculatorCell.swift in Sources */,
 				849C7411250A269500C5A81E /* PhotoViewModel.swift in Sources */,
 				849C73D125093FEE00C5A81E /* SceneDelegate.swift in Sources */,
+				848A45C3251011CA0042E748 /* UIColor+Extension.swift in Sources */,
 				849C74032509501D00C5A81E /* PhotoListController.swift in Sources */,
 				84C8EBA8250CD79E000039A4 /* DataSourceProtocols.swift in Sources */,
 				849C740725095B5F00C5A81E /* AlbumCell.swift in Sources */,

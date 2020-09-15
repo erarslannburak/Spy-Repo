@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 extension UIView {
    
+    public func circle() {
+        clipsToBounds = true
+        layer.cornerRadius = frame.height / 2
+    }
+    
     public func cornerRadius(radius: CGFloat) {
         clipsToBounds = true
         layer.cornerRadius = radius
