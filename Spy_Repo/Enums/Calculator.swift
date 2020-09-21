@@ -7,16 +7,18 @@
 //
 
 import Foundation
-enum Calculator:String {
+import UIKit
+
+enum CalculatorButton:String {
     case AC
-    case inverse
+    case plusMinus
     case percent
     case divide
     case multiply
     case minus
     case plus
     case equal
-    case point = ","
+    case decimal = ","
     case zero = "0"
     case one = "1"
     case two = "2"
@@ -27,9 +29,15 @@ enum Calculator:String {
     case seven = "7"
     case eight = "8"
     case nine = "9"
-}
-
-enum CalculatorButtonType {
-    case number
-    case symbol
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .AC,.plusMinus,.percent:
+            return .calculatorLightGreyColor
+        case .decimal,.zero,.one,.two,.three,.four,.five,.six,.seven,.eight,.nine:
+            return .calculatorDarkGreyColor
+        default:
+            return .calculatorOrangeColor
+        }
+    }
 }

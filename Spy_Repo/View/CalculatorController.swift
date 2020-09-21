@@ -13,16 +13,20 @@ class CalculatorController: ViewController {
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var resultLabel:UILabel!
     
-    let calculatorListViewModel = CalculatorListViewModel()
+    var calculatorButtonListViewModel = CalculatorButtonListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
-        collectionView.dataSource = calculatorListViewModel.datasource
+        collectionView.dataSource = calculatorButtonListViewModel.datasource
+        
+        calculatorButtonListViewModel.screenTitle.bind { (screenTitle) in
+            self.resultLabel.text = screenTitle
+        }
         
         
-        calculatorListViewModel.datasource.configureCell = {[weak self] (cell,item,indexPath) in
+        calculatorButtonListViewModel.datasource.configureCell = {[weak self] (cell,item,indexPath) in
             guard self != nil else {return}
             (cell as! CalculatorCell).item = item
             
@@ -41,10 +45,15 @@ class CalculatorController: ViewController {
 
 extension CalculatorController: UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        calculatorButtonListViewModel.didSelectForItemAt(indexPath)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = (collectionView.frame.width - 42)/4
         
-        if calculatorListViewModel.cellForItemAt(indexPath).item == .zero {
+        if calculatorButtonListViewModel.cellForItemAt(indexPath).calcultorButton == .zero {
             return CGSize(width: (itemWidth * 2)+14, height: itemWidth)
         }
         

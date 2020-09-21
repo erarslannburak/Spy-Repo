@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,7 +40,7 @@
                                                     <rect key="frame" x="18" y="18" width="14" height="14"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGe-zb-0AO">
-                                                    <rect key="frame" x="30" y="16" width="88.5" height="18"/>
+                                                    <rect key="frame" x="-19.5" y="16" width="89" height="18"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -53,17 +53,25 @@
                                                 <constraint firstItem="2Fj-Ia-cK2" firstAttribute="top" secondItem="9WK-c7-RIS" secondAttribute="top" constant="18" id="X1M-7f-Gac"/>
                                                 <constraint firstItem="2Fj-Ia-cK2" firstAttribute="centerX" secondItem="9WK-c7-RIS" secondAttribute="centerX" id="abE-Om-V0P"/>
                                                 <constraint firstItem="2Fj-Ia-cK2" firstAttribute="centerY" secondItem="9WK-c7-RIS" secondAttribute="centerY" id="bcC-N5-oam"/>
+                                                <constraint firstItem="xGe-zb-0AO" firstAttribute="centerX" secondItem="9WK-c7-RIS" secondAttribute="centerX" id="fAc-AH-CEW"/>
                                                 <constraint firstItem="xGe-zb-0AO" firstAttribute="centerY" secondItem="9WK-c7-RIS" secondAttribute="centerY" id="gf6-J0-ScU"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="0Tu-qM-dlR"/>
+                                                </mask>
+                                            </variation>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="contentLabel" destination="xGe-zb-0AO" id="Rz5-Pv-nXd"/>
                                             <outlet property="imageView" destination="2Fj-Ia-cK2" id="ljI-7N-uak"/>
+                                            <outlet property="titleCenterXConst" destination="fAc-AH-CEW" id="w2T-0t-Apt"/>
+                                            <outlet property="titleLeadingConst" destination="0Tu-qM-dlR" id="MUQ-5o-mFv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G32-GA-FyC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="G32-GA-FyC">
                                 <rect key="frame" x="16" y="102" width="344" height="108.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="94"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
