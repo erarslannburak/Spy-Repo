@@ -20,8 +20,8 @@ struct PhotoListViewModel {
 
 extension PhotoListViewModel {
     
-    mutating func addPhoto(data:Data, parent:UUID) {
-        self.datasource.items.insert(DefaultCellModel((identifier: "photoCell", model: coreDataManager.insertPhoto(data: data, parent: parent))), at: 0)
+    mutating func addPhoto(base64DataStr:String, parent:UUID) {
+        self.datasource.items.insert(DefaultCellModel((identifier: "photoCell", model: coreDataManager.insertPhoto(base64DataStr: base64DataStr, parent: parent))), at: 0)
     }
     
     func didSelectItemAt(_ indexPath:IndexPath) -> PhotoViewModel {
@@ -60,7 +60,7 @@ extension PhotoViewModel {
         return photo.parentId
     }
     
-    var image:Data {
+    var image:String {
         return photo.image
     }
     

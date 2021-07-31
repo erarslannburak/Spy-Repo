@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8424817C250D4DC90085C45B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424817B250D4DC90085C45B /* UIView+Extension.swift */; };
+		846BEC4626B57E1800C4793D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BEC4526B57E1800C4793D /* UIImage+Extension.swift */; };
+		846BEC4826B57FDE00C4793D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BEC4726B57FDE00C4793D /* String+Extension.swift */; };
+		846BEC4A26B5889D00C4793D /* MyAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BEC4926B5889D00C4793D /* MyAlphabet.swift */; };
+		846BEC4C26B588E000C4793D /* Character+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BEC4B26B588E000C4793D /* Character+Extension.swift */; };
 		848A45C3251011CA0042E748 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C2251011CA0042E748 /* UIColor+Extension.swift */; };
 		848A45C62510258A0042E748 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C52510258A0042E748 /* Calculator.swift */; };
 		848A45C8251026BF0042E748 /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A45C7251026BF0042E748 /* CalculatorViewModel.swift */; };
@@ -54,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		8424817B250D4DC90085C45B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		846BEC4526B57E1800C4793D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		846BEC4726B57FDE00C4793D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		846BEC4926B5889D00C4793D /* MyAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlphabet.swift; sourceTree = "<group>"; };
+		846BEC4B26B588E000C4793D /* Character+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Extension.swift"; sourceTree = "<group>"; };
 		848A45C2251011CA0042E748 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		848A45C52510258A0042E748 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		848A45C7251026BF0042E748 /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				848A45C52510258A0042E748 /* Calculator.swift */,
+				846BEC4926B5889D00C4793D /* MyAlphabet.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -243,6 +252,9 @@
 				84C8EB99250C146F000039A4 /* UICollectionView+Extension.swift */,
 				848A45C2251011CA0042E748 /* UIColor+Extension.swift */,
 				8424817B250D4DC90085C45B /* UIView+Extension.swift */,
+				846BEC4526B57E1800C4793D /* UIImage+Extension.swift */,
+				846BEC4726B57FDE00C4793D /* String+Extension.swift */,
+				846BEC4B26B588E000C4793D /* Character+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C8EB9A250C146F000039A4 /* UICollectionView+Extension.swift in Sources */,
+				846BEC4C26B588E000C4793D /* Character+Extension.swift in Sources */,
 				849C740B250982EC00C5A81E /* AlbumViewModel.swift in Sources */,
 				849C73F7250940B900C5A81E /* Photo.swift in Sources */,
 				849C73D325093FEE00C5A81E /* ViewController.swift in Sources */,
@@ -377,8 +390,10 @@
 				84C8EBA4250CD720000039A4 /* CollectionDataSource.swift in Sources */,
 				848A45C62510258A0042E748 /* Calculator.swift in Sources */,
 				84C8EBA6250CD756000039A4 /* ReusableCell.swift in Sources */,
+				846BEC4826B57FDE00C4793D /* String+Extension.swift in Sources */,
 				84C8EB8F250B8AA3000039A4 /* CoreDataManager.swift in Sources */,
 				849C740125094D0C00C5A81E /* AlbumListController.swift in Sources */,
+				846BEC4A26B5889D00C4793D /* MyAlphabet.swift in Sources */,
 				849C73F5250940A300C5A81E /* Album.swift in Sources */,
 				8424817C250D4DC90085C45B /* UIView+Extension.swift in Sources */,
 				849C73FF25094CB000C5A81E /* CalculatorController.swift in Sources */,
@@ -390,6 +405,7 @@
 				849C7411250A269500C5A81E /* PhotoViewModel.swift in Sources */,
 				849C73D125093FEE00C5A81E /* SceneDelegate.swift in Sources */,
 				848A45C3251011CA0042E748 /* UIColor+Extension.swift in Sources */,
+				846BEC4626B57E1800C4793D /* UIImage+Extension.swift in Sources */,
 				849C74032509501D00C5A81E /* PhotoListController.swift in Sources */,
 				84C8EBA8250CD79E000039A4 /* DataSourceProtocols.swift in Sources */,
 				849C740725095B5F00C5A81E /* AlbumCell.swift in Sources */,

@@ -21,8 +21,8 @@ class AlbumCell: UICollectionViewCell,ReusableCell {
             
             nameLabel.text = item?.property?.model?.name
             
-            item?.property?.model?.coverImage.bind(listener: { [weak self] (data)  in
-                self?.imageView.image = UIImage(data: data)
+            item?.property?.model?.coverImage.bind(listener: { [weak self] (base64DataStr)  in
+                self?.imageView.image = base64DataStr.convertBase64StringToImage()
             })
         }
     }

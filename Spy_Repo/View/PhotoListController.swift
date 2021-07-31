@@ -95,12 +95,13 @@ extension PhotoListController: UIImagePickerControllerDelegate, UINavigationCont
             
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
             
-            guard let data = image.jpegData(compressionQuality: 0.75) else {return}
+            let base64DataStr = image.convertImageToBase64String().encodeMyAlphabet()
             
-            self.photoListViewModel.addPhoto(data: data, parent: self.albumViewModel.id)
-            self.albumViewModel.updateCover(data: data)
-            self.collectionView.reloadData()
-
+            
+            
+//            self.photoListViewModel.addPhoto(base64DataStr: base64DataStr, parent: self.albumViewModel.id)
+//            self.albumViewModel.updateCover(base64DataStr: base64DataStr)
+//            self.collectionView.reloadData()
         }
     }
 

@@ -73,7 +73,7 @@ class CoreDataManager {
         coreAlbum.setValue(name, forKey: "name")
         coreAlbum.setValue(Date(), forKey: "createDate")
         coreAlbum.setValue(UUID(), forKey: "id")
-        coreAlbum.setValue(UIImage(named: "art")?.jpegData(compressionQuality: 0.5), forKey: "coverImage")
+        coreAlbum.setValue(UIImage(named: "art")?.convertImageToBase64String(), forKey: "coverImage")
         
         do {
             try managedContext.save()
@@ -86,7 +86,7 @@ class CoreDataManager {
     }
     
     // MARK: - Update Album Cover Image
-    func update(coverImage:Data, id:UUID) {
+    func update(coverImage:String, id:UUID) {
     
         let context = CoreDataManager.shared.persistentContainer.viewContext
 
@@ -148,7 +148,7 @@ class CoreDataManager {
     }
     
     // MARK: - Insert Album
-    func insertPhoto(data:Data,parent:UUID) -> PhotoViewModel? {
+    func insertPhoto(base64DataStr:String,parent:UUID) -> PhotoViewModel? {
         let managedContext = CoreDataManager.shared.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Photo",in: managedContext)!
                 
@@ -158,7 +158,7 @@ class CoreDataManager {
         corePhoto.setValue(UUID(), forKey: "id")
         corePhoto.setValue(parent, forKey: "parentId")
         corePhoto.setValue(Date(), forKey: "date")
-        corePhoto.setValue(data, forKey: "image")
+        corePhoto.setValue(base64DataStr, forKey: "image")
     
         do {
           try managedContext.save()

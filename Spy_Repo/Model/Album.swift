@@ -27,7 +27,7 @@ struct Album {
     let id:UUID
     let name:String
     let createDate:Date
-    let coverImage:Dynamic<Data>
+    let coverImage:Dynamic<String>
     
     
     init(_ coreAlbum:CoreAlbum) {

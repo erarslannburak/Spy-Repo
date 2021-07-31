@@ -12,7 +12,7 @@ import CoreData
 struct Photo {
     let id:UUID
     let parentId:UUID
-    let image:Data
+    let image:String
     let date:Date
     
     

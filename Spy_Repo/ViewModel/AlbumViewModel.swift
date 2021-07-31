@@ -70,7 +70,7 @@ extension AlbumViewModel {
         return album.createDate
     }
     
-    var coverImage:Dynamic<Data> {
+    var coverImage:Dynamic<String> {
         return album.coverImage
     }
 }
@@ -80,8 +80,8 @@ extension AlbumViewModel {
         return coreDataManager.fetchPhotos(parent: album.id)!
     }
     
-    func updateCover(data: Data) {
-        coreDataManager.update(coverImage: data, id: album.id)
-        album.coverImage.value = data
+    func updateCover(base64DataStr: String) {
+        coreDataManager.update(coverImage: base64DataStr, id: album.id)
+        album.coverImage.value = base64DataStr
     }
 }

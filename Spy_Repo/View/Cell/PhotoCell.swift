@@ -16,7 +16,9 @@ class PhotoCell: UICollectionViewCell,ReusableCell {
     
     var item: DefaultCellModel<PhotoViewModel>?{
         didSet {
-            self.imageView.image = UIImage(data: (item?.property?.model!.image)!)
+//            self.imageView.image = UIImage(data: (item?.property?.model!.image)!)
+            self.imageView.image = (item?.property?.model!.image)?.convertBase64StringToImage()
+
         }
     }
     
